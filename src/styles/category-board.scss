@@ -1,0 +1,13 @@
+.category {
+  &-board {
+    display: flex;
+    justify-content: center;
+  }
+  &-header {
+    border: 2px solid blue;
+    padding: 1rem 2.5rem;
+  }
+  &-column {
+    
+  }
+}
