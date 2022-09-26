@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
-
-function App() {
+import {useState, useEffect } from 'react'
+import { collection, getDocs } from "firebase/firestore";
+import Category from './components/category.js'
+function App({db}) {
+  const [categories, setCategories] = useState([]);
+  async function fetchCollection() {
+    const categoryCollection = []
+    await getDocs(collection(db, "categories")).then((results) => {
+      results.forEach(doc => {
+        categoryCollection.push(doc.data());
+      })
+    }).catch(error => console.log(error));
+    setCategories(categoryCollection);
+  }
+  useEffect(() => {
+    fetchCollection();
+  }, [])
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="categories-header">
+        {categories.map((category) => (
+          <Category category={category.name} />
+        ))}
+      </div>
     </div>
   );
 }
