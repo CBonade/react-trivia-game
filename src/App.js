@@ -30,9 +30,11 @@ function App({db}) {
   return (
     <div className="App">
       <div className="category-board">
-        {categories.map((category, index) => (
-          <Category key={`category-${index}`} categoryIndex={index} category={category.name} questions={questions.filter(question => question.category.toLowerCase() === category.name.toLowerCase())} />
-        ))}
+        <div className="category-board-inner">
+          {categories.map((category, index) => (
+            <Category key={`category-${index}`} categoryIndex={index} category={category.name} questions={questions.filter(question => question.category.toLowerCase() === category.name.toLowerCase())} />
+          ))}
+        </div>
       </div>
     </div>
   );
