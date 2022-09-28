@@ -1,0 +1,27 @@
+body {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.category {
+  &-board {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    height: 100%;
+    &-inner {
+      display: flex;
+      border: $game-board-border-thickness solid $game-board-blue;
+    }
+  }
+  &-header {
+    border: $game-board-border-thickness solid $game-board-blue;
+    padding: 1rem 2.5rem;
+    font-weight: bold;
+  }
+  &-question {
+    border: $game-board-border-thickness solid $game-board-blue;
+    padding: 1rem 2.5rem;
+  }
+}
