@@ -23,5 +23,27 @@ body {
   &-question {
     border: $game-board-border-thickness solid $game-board-blue;
     padding: 1rem 2.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    &.completed {
+      cursor: default;
+      background-color: $game-board-blue;
+      color: $white;
+    }
+    &-choices-outer {
+      text-align: center;
+      position: relative;
+      .MuiIconButton-root {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+      }
+    }
+    &-choices-inner {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      padding: 2rem;
+    }
   }
 }
