@@ -3,6 +3,7 @@ import {useState, useEffect } from 'react'
 import { collection, getDocs } from "firebase/firestore";
 import Category from './components/category.js'
 import './styles/styles.scss'
+
 function App({db}) {
   const [categories, setCategories] = useState([]);
   const [questions, setQuestions] = useState([]);

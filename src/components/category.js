@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
- 
- 
+
+import Question from './question';
 const Category = (props) => {
   const [selectedQuestions, setSelectedQuestions] = useState([]);
   const values = [200, 400, 600, 800, 1000];
@@ -25,9 +25,9 @@ const Category = (props) => {
       </div>
       <div className="category-questions">
       {selectedQuestions.map((question, index) => {
-          return (<div key={`category-${props.categoryIndex}-question-${index}`} className="category-question">
-            ${question.value}
-          </div>)
+          return (
+            <Question question={question} key={`category-${props.categoryIndex}-question-${index}`} className="category-question" />
+          )
         })
       }
       </div>
