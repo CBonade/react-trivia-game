@@ -1,7 +1,8 @@
-import './App.css';
 import {useState, useEffect } from 'react'
 import { collection, getDocs } from "firebase/firestore";
-import Category from './components/category.js'
+import { Routes, Route, Link } from "react-router-dom";
+import './styles/styles.scss'
+import StartGame from './pages/start-game'
 import './styles/styles.scss'
 
 function App({db}) {
@@ -30,13 +31,9 @@ function App({db}) {
   
   return (
     <div className="App">
-      <div className="category-board">
-        <div className="category-board-inner">
-          {categories.map((category, index) => (
-            <Category key={`category-${index}`} categoryIndex={index} category={category.name} questions={questions.filter(question => question.category.toLowerCase() === category.name.toLowerCase())} />
-          ))}
-        </div>
-      </div>
+      <Routes>
+        <Route path="/" element={<StartGame categories={categories} questions={questions} />} />
+      </Routes>
     </div>
   );
 }
