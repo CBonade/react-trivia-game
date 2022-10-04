@@ -1,6 +1,6 @@
 {
   "name": "trivia-game",
-  "homepage": "http://cbonade.github.io/trivia-app",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
