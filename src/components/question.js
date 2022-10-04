@@ -5,13 +5,20 @@ import CloseIcon from '@mui/icons-material/Close';
 const Question = (props) => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [questionAnswered, setQuestionAnswered] = useState(false);
+  const [questionCorrect, setQuestionCorrect] = useState(false);
+
   function toggleDialog(value) {
-    console.log(value);
     setDialogOpen(value);
   }
   
-  function checkAnswer() {
+  function checkAnswer(choice, value) {
+    const isCorrect = choice.correct;
+    setQuestionCorrect(isCorrect);
+    if (isCorrect) {
+      props.updateScore(props.question.value)
+    }
     setQuestionAnswered(true);
+    props.answerQuestion();
     toggleDialog(false);
   }
 
@@ -20,9 +27,13 @@ const Question = (props) => {
   }
 
   return (
-    <div className={`category-question ${questionAnswered ? 'completed' : ''}`} onClick={() => questionAnswered ? '' : toggleDialog(true)}>
+    <div className={`category-question ${questionAnswered ? 'completed' : ''} ${questionCorrect ? 'correct' : 'incorrect'}`} onClick={() => questionAnswered ? '' : toggleDialog(true)}>
       <div>
-        {questionAnswered ? "Completed" : `$${props.question.value}`}
+        {questionAnswered ? 
+          questionCorrect 
+            ? `+$${props.question.value}` 
+            : "X" 
+        : `$${props.question.value}`}
       </div>
       <Dialog fullWidth
   maxWidth="md" open={dialogOpen} onClose={() => toggleDialog(false)} onClick={handleDialogClick}>
@@ -34,9 +45,9 @@ const Question = (props) => {
             </IconButton>
               {props.question.choices.map(((choice, index) => {
                 return (
-                  <div className="category-question-choice" key={`choice-${choice}`}>
-                    <Button variant="contained" onClick={checkAnswer}>
-                      <div>{choice}</div>
+                  <div className="category-question-choice" key={`choice-${choice.answer}`}>
+                    <Button variant="contained" onClick={() => checkAnswer(choice)}>
+                      <div>{choice.answer}</div>
                     </Button>
                   </div>
                 )

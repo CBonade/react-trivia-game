@@ -27,8 +27,13 @@ body {
     cursor: pointer;
     &.completed {
       cursor: default;
-      background-color: $game-board-blue;
       color: $white;
+      &.correct {
+        background-color: $game-board-blue;
+      }
+      &.incorrect {
+        background-color: $game-board-red;
+      }
     }
     &-choices-outer {
       text-align: center;
@@ -44,6 +49,9 @@ body {
       flex-direction: row;
       justify-content: space-around;
       padding: 2rem;
+    }
+    &-choice {
+      flex-basis: 20%;
     }
   }
 }

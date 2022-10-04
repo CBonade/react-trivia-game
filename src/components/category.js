@@ -26,7 +26,12 @@ const Category = (props) => {
       <div className="category-questions">
       {selectedQuestions.map((question, index) => {
           return (
-            <Question question={question} key={`category-${props.categoryIndex}-question-${index}`} className="category-question" />
+            <Question 
+            question={question} 
+            key={`category-${props.categoryIndex}-question-${index}`} 
+            className="category-question" 
+            updateScore={props.updateScore}
+            answerQuestion={props.answerQuestion} />
           )
         })
       }
