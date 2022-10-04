@@ -1,6 +1,6 @@
 {
   "name": "trivia-game",
-  "homepage": ".",
+  "homepage": "https://cbonade.github.io/react-trivia-game/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
